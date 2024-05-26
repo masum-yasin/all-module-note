@@ -1,9 +1,18 @@
 
 
 1. mysql -h localhost -u root -p
-2. show databases;
-3. create database wdpf_55;
-* show databases;
+
+2. show databases;   {sob database show hoy}
+
+3. use database; {nirthisto database use kora jye}
+
+4. create database wdpf_55;
+
+5. SHOW TABLES; (database er moddhe koto ta table ase ta show kre)
+
+6. DESC students; (ae command er maddhome table er datatype dekha jye)
+
+
 
 
 CREATE TABLE user1 (
@@ -17,18 +26,36 @@ CREATE TABLE user1 (
 
 
 ========= Insert ============
-INSERT INTO users (id, name, address, phone, dob) VALUES (
+
+1.INSERT INTO users (id, name, address, phone, dob) VALUES (
 	NULL, 'Masum', 'Jatrabari', '0156541695', '1996-05-03'
 )
-
+2. INSERT INTO students VALUES(101, 'Raul'); (table er nirdisto id er data insert)
 
 
 ========== select ===========
-SELECT * FROM user1;
-SELECT id, name, address, FROM user1;
+
+1. SELECT * FROM user1;    (nirdisto Table er All Data View)
+
+2. SELECT id, name, address, FROM user1;   (nirdisto Table er Column  Data View)
+
+3. SELECT emp_id, name FROM employees WHERE emp_id = 1; 
 
 
+========== UPDATE ===========
 
+1. UPDATE students SET name = 'Tasmia', city = 'Barisal', class = 'Honours 3rd' WHERE name = 'roksana';
+
+2. UPDATE students SET name = 'Tasmia', city = 'Barisal', class = 'Honours 3rd' WHERE id = '2';
+
+
+========== Delete ===========
+
+1. DELETE FROM students WHERE id = 6; (Delete Single Id)
+
+2. DROP TABLE students; (Pura Table Delete Hoye Jabe)
+
+3. ALTER TABLE TRUNCATE students (Table thake jabe kintu table er bitore er data delete hoye jabe)
 
 mysql -h localhost -u root -p
 show databases;
@@ -447,5 +474,33 @@ mysql -h localhost -u root -p wdpf_test < wdpf_55_backup.sql
 ALTER TABLE district					= jei table change korbo
 ADD CONSTRAINT FK_district_key				= set a index name
 FOREIGN KEY (div_id) REFERENCES division(id);		= first give foreign key column name then primary key column name
+
+============Database Date Formate=============
+Date= YYYY-MM-DD
+
+==================== Default Value Set==============
+
+CREATE TABLE customer2(
+id INT AUTO_INCREMENT PRIMARY KEY,		(je kono Table a Default Value Set kora jye. tobe Insert korar somoy default column er value ar insert krte hbe na);
+    name VARCHAR(50),
+    email VARCHAR(150),
+    acc_type VARCHAR(40) NOT NULL DEFAULT "saving"
+);
+
+====================Alias9 Or As keyword=====================
+
+SELECT id AS Account_NO FROM customer2;
+
+
+=======================CONCATE()===================
+Two string add for example
+1. SELECT CONCAT('Hey', " ",'Buddy!');
+result : Hey Buddy!
+
+2.Select emp_id, CONCATE(fname, '', lname) as FullName FROM employees;
+
+kono string er shati kono kichu add korar khetre..o bebotrito hoy.
+
+3.Select emp_id, CONCATE(fname, '', 'abcd') as FullName FROM employees;
 
 
