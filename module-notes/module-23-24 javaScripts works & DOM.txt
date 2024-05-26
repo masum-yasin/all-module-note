@@ -1,0 +1,125 @@
+
+============= DOM ==================
+
+1. what is Javascript : High Level Interpreted Language.
+
+2. document.getElementById('second-title').style.color = 'red'		= id color will be red. (inspect code)
+
+
+3. blogText = document.getElementsByTagName('p');
+        for (const p of blogText) {			= (by using for of loop) every <p> er InnerText will be collected. (script code) .
+        }  
+   console.log(p.innerText) ;
+
+
+4. const secondTitle = document.getElementById('second-title') ;
+        secondTitle.style.textAlign = 'center' ;			= Id er style text-center hoye jabe.
+
+
+5. const thirdTitle = document.getElementById('forth-title');
+        thirdTitle.innerText = 'new title by JS';			= text will be changed.
+ 	thirdTitle.style.backgroundColor = "lightblue"			= background-color will be changed
+	thirdTitle.style.marginLeft = '10px'				
+        thirdTitle.style.padding = '5px'				= margin/padding . 
+	blog.innerHTML =  ` <h3> .... <h3> <p> ....<p>  `		= shob html tag likha jabe. 
+
+
+
+6.  const blogs = document.getElementsByClassName('blog') ;
+        for (const blog of blogs) {					= (by using loop) class style will changed. 
+            blog.style.border = '2px solid orange' ;
+            blog.style.borderRadius = '15px' ;
+        }
+
+
+
+7. document.querySelector('.blog')		= first css select korbe.(id/ class er age #/. use korte hobe )
+   document.querySelectorAll('p')		= all css select korbe.
+ 
+
+8. secondTitle2.setAttribute('title', 'I added a tooltip usnig JS')	= title er attribute set hobe.
+
+9. secondTitle2.parentNode		=	second-title er parent tag dekha jabe.
+
+10. secondTitle2.parentNode.parentNode.parentNode	= joto parentNode lekhbe toto uporer parent dekhabe.
+
+11. secondTitle.childNodes				= Child node gula dekhabe.
+
+
+12. 
+const friend = document.createElement('li');
+friend.innerText = 'Friend- 11' ;			= create Element.
+friends.appendChild(friend)  
+
+
+13. const friendDiv = document.createElement('div');
+    friendDiv.classList.add('freind');			= <div> er vitor friend .class add hoye jabe .
+
+14. 
+const friends = document.getElementById('friends') ;
+const fifth = friends.children[4] ;
+console.log(fifth);					= Remove element.
+friends.removeChild(fifth);
+
+
+=============== Event ==============
+
+* OnClick 
+
+1. <button onclick="alert(7)">Click me </button>	= An Alert message will show.
+
+2. <button onclick="document.body.style.backgroundColor='lightgreen'">Click me: Green </button>					= BG will be green on click  (method-1)
+
+3. <button onclick="makeRed()" > click me : red   </button>
+   function makeRed() {						 = BG will be red using Function(method-2)
+    document.body.style.backgroundColor = 'coral' ;
+}
+
+4.*** <button id="blue-button"> click me: Blue</button>
+    function makeBlue () {
+     document.body.style.backgroundColor = 'lightblue'	     = Bg Blue by calling ID & function using DOM.(Method-3)
+ }
+const blueButton = document.getElementById( 'blue-button' );
+ blueButton.onclick = makeBlue ;				= makeblue() function age call() kora jabena. ***
+
+
+5. *** 
+document.getElementById('khaki-button').addEventListener('click' , function() {	  =        direct EventListener-7***
+    document.body.style.backgroundColor = 'khaki' ;
+} )
+
+-- javascrip events
+* 'movemouse'	= mouse joto move korbe toto event hobe.
+* 'mouseenter'	= mouse pointer enter korlei event hobe.
+* 'mouseout'	= mouse pointer out hoye gese event hobe.
+* ''
+
+
+5. console.log(nameField.value)		=	input er vitorer text paite hoile (.value) deya laagbe.
+
+
+
+============ module (24-6) Delete confirmation ============
+
+
+6. events
+
+ * focus 	=  seta focus korbe seta edit/style hobe.
+ * blur  	=  bahirer ongshe click korle edit/style hobe.
+ * keydown 	=  ak key por console.log pabe
+ * keypress 	=  ak key age pabe.
+ *** keyup	=  key deyar sathe sathe peye jabe.***
+ *** change	=  full text copy kore dileo peye jabe***
+
+
+
+============ module (24-7) Event Bubble ============
+
+
+7. event.stopPropagation 		=	stop/turn off/avoid  event bubble.
+
+8. event.stopImmediatePropagation() ;	=	aitar parent/child er shob event stop hoiya jabe.
+
+9. console.log(event.target) ;		=	jake target korsi take click korle dekhabe.
+
+10. 
