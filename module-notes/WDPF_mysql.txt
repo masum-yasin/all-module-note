@@ -114,15 +114,12 @@ SELECT id, name, address FROM users; // selected fields
     
     );
 
+4. ALTER TABLE employees ADD COLUMN salary INT NOT NULL DEFAULT 25000; (kono table a column add krte chile ae command dite hoy)
 
 
 
 
-4. SELECT DISTINCT jobTitle FROM employees;			= distinct returns only different value.
 
-
-
-5. SELECT * FROM employees WHERE officeCode='1' OR officeCode='2';	= 
 
 
 
@@ -177,8 +174,6 @@ SELECT * FROM `employees` WHERE officeCode BETWEEN 1 AND 3;
 
 SELECT * FROM `employees` ORDER BY employeeNumber desc; 
 
-SELECT * FROM `employees` ORDER BY lastName, firstName; 
-
 UPDATE employees SET lastName='Ahmed', firstName='Masum', email='masum@gmail.com' WHERE employeeNumber=1002
 
 
@@ -189,6 +184,10 @@ UPDATE employees SET lastName='Ahmed', firstName='Masum', email='masum@gmail.com
 $sql = "SELECT * FROM Orders LIMIT 30";			= data will show first 30 record
 
 $sql = "SELECT * FROM Orders LIMIT 10 OFFSET 5";	= prothom 5 ta baade porer 10 ta dekhabe.	
+
+	SELECT * FROM employees LIMIT 3, 3; (3 bade 4 theake suro hbe 3 ta id er data dekhabe)
+
+	SELECT * FROM employees ORDER BY salary DESC LIMIT 3; (descending order a top 3 salary show kora holo)
 
 
 
@@ -577,6 +576,60 @@ Result:dehsar
 1. SELECT DISTINCT dept FROM employees;   (table er kono field er unique value ber kore aner junno ae method beboher kora hoy)
 accounting, casherir, manager, developer, accounting, cahserier, accounting
 result:accounting, casherier, developer, manager
+
+=======================ORDER BY==================================
+1.SELECT * FROM `employees` ORDER BY lastName, firstName; (Assending order sorting hoy[choto thake boro])
+
+2.SELECT * FROM employees ORDER BY fname DESC;    (descending order a sort hoy. boro thake choto)
+
+3.SELECT * FROM employees ORDER BY fname DESC, lname DESC; (descending order a sort hoy. boro thake choto)
+4. 3. SELECT * FROM employees ORDER BY salary DESC; (decending order a salary sorting kora)
+
+=======================Like==================================
+1. SELECT * FROM employees WHERE dept LIKE "%acc%";
+
+2. SELECT * FROM employees WHERE fname LIKE "___" (fname er protom 4 chart asbe);
+
+3. SELECT * FROM employees WHERE fname LIKE 't%';
+
+4.  SELECT * FROM employees WHERE dept LIKE '%t'; 
+
+5. SELECT * FROM employees WHERE dept LIKE "%nag%";
+
+6. SELECT * FROM employees WHERE emp_id LIKE "%2%"; (id query kora jye)
+
+=======================COUNT()==================================
+
+1. SELECT COUNT(*) FROM employees;  (table er moddhe koto ta record ase ta count fucation er maddhome jana jabe);
+
+2. SELECT COUNT(fname) FROM employees; (table er moddhe nirdisto field  koto ta record ase ta count fucation er maddhome jana jabe);
+
+3. SELECT COUNT(DISTINCT dept) FROM employees; (table er moddhe nirdisto field Unique koto ta record ase ta count fucation er maddhome jana jabe);
+
+4. SELECT COUNT(emp_id) FROM employees WHERE dept = "accounting"; (table er moddhe nirdisto field id dore accounting kotobar ase ta jana jye);
+
+=======================GROUP BY==================================
+
+1. SELECT dept FROM employees GROUP BY dept; (group vabe unique department chole asbe)
+
+2. SELECT dept, COUNT(emp_id) FROM employees GROUP BY dept; (kon department koyta ase ta group akare chole asbe);
+
+
+
+=======================SUM()==================================
+
+1. SELECT SUM(salary) FROM employees;
+ 
+2. SELECT AVG(salary) FROM employees;
+
+3. SELECT dept, SUM(salary) FROM employees GROUP BY dept;  (kon department er koto salary ta group by total salary show kore)
+
+4. SELECT dept, COUNT(emp_id), SUM(salary) FROM employees GROUP BY dept; (kon department koyta ase tar id dore total salary ber kora jye)
+
+
+
+
+
 
 
 
