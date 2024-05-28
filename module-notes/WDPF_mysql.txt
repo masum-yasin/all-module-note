@@ -463,12 +463,6 @@ mysql -h localhost -u root -p wdpf_test < wdpf_55_backup.sql
 
 
 
-
-
-
-
-
-
 ==================================== foreign key constraint ======================================
 
 ALTER TABLE district					= jei table change korbo
@@ -481,7 +475,7 @@ Date= YYYY-MM-DD
 ==================== Default Value Set==============
 
 CREATE TABLE customer2(
-id INT AUTO_INCREMENT PRIMARY KEY,		(je kono Table a Default Value Set kora jye. tobe Insert korar somoy default column er value ar insert krte hbe na);
+id INT AUTO_INCREMENT PRIMARY KEY,  (je kono Table a Default Value Set kora jye. tobe Insert korar somoy default column er value ar insert krte hbe na);
     name VARCHAR(50),
     email VARCHAR(150),
     acc_type VARCHAR(40) NOT NULL DEFAULT "saving"
@@ -492,15 +486,99 @@ id INT AUTO_INCREMENT PRIMARY KEY,		(je kono Table a Default Value Set kora jye.
 SELECT id AS Account_NO FROM customer2;
 
 
-=======================CONCATE()===================
+=======================CONCATE()=============================
+
 Two string add for example
 1. SELECT CONCAT('Hey', " ",'Buddy!');
 result : Hey Buddy!
-
-2.Select emp_id, CONCATE(fname, '', lname) as FullName FROM employees;
+982.Select emp_id, CONCATE(fname, '', lname) as FullName FROM employees;
 
 kono string er shati kono kichu add korar khetre..o bebotrito hoy.
 
 3.Select emp_id, CONCATE(fname, '', 'abcd') as FullName FROM employees;
+
+4.SELECT CONCAT_WS('-','Hi', 'Hello', 'jim', 'Luci');
+
+result:Hi-Hello-jim-Luci
+
+5.SELECT CONCAT_WS(':', emp_id, UPPER(name), dept) FROM employees;
+
+6. SELECT CONCAT(LEFT(dept, 1), emp_id) FROM employees;
+result: m1,d2, a3
+
+7. SELECT CONCAT_WS(':', emp_id, name, dept) FROM employees
+
+result: 1:mamun:manager
+2:khayrul Alam Rayan:developer
+3:rashed:accounting
+4:shovo:businessman
+
+
+=======================REPLACE=============================
+
+1. SELECT REPLACE(str, from_str, to_str)
+
+Exp:SELECT REPLACE('ABCDPQR', 'PQR', 'XYZ');
+
+Result: ABCDXYZ
+
+Exp:SELECT REPLACE('Hello Buddy', 'Hello', 'Hay');
+
+Result: Hay Buddy
+
+Exp: SELECT REPLACE(emp_id, 2, 2000) AS NewEmpIDs, name FROM employees;
+
+Result:2000 khayrul Alam Rayan
+
+Exp:SELECT REPLACE('HEY BUDDY','','');
+
+
+=======================CHAR_LENGTH=============================
+
+1.SELECT name, CHAR_LENGTH(fname) AS Length FROM employees   (jekono field er char length jana jye)
+
+2.SELECT * FROM employees WHERE CHAR_LENGTH(name) > 5;       (field er length 5, 10, 20 upoer jana jabe)
+
+
+
+=======================Other Funcation=============================
+1. SELECT INSERT('Hello Wassup', 6, 0, 'Raju'); ()
+
+result: HelloRaju Wassup (kono sentence er maje jekono kichu add kora jye);
+
+2.SELECT LEFT('Hey Buddy Raju',9);
+result:Hey Buddy (ae funcation er maddhome left side ser jekono content ana jabe)
+
+3.SELECT RIGHT('Hey Buddy Raju',4);
+result:Raju (ae funcation er maddhome right side ser jekono content ana jabe)
+
+4.SELECT REPEAT('masum', 15); (ae funcation er maddhome jekono jinesh akadikbar repeat kora jabe)
+result: masum masum masum masum masum
+ 
+5.SELECT TRIM('    Bangladesh    ');
+ result:Bangladesh    (trim er maddhome white space remove kora hoy right and left side);
+
+=======================REVERSE=============================
+1.SELECT emp_id,  REVERSE(name) FROM employees;
+Result:dehsar
+
+=======================UPPER & LOWER=============================
+1. SELECT UPPER('abcdxyz');
+  SELECT UCASE('abcdxyz');
+ result:ABCDXYZ
+
+2. SELECT LOWER('ABCDXYZ');
+   SELECT LCASE('ABCDXYZ');
+  result:abcdxyz
+
+
+=======================DISTINCT==================================
+
+1. SELECT DISTINCT dept FROM employees;   (table er kono field er unique value ber kore aner junno ae method beboher kora hoy)
+accounting, casherir, manager, developer, accounting, cahserier, accounting
+result:accounting, casherier, developer, manager
+
+
+
 
 
