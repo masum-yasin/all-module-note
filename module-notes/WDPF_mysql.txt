@@ -25,12 +25,13 @@ CREATE TABLE user1 (
 	ENGINE=INNODB ;
 
 
-========= Insert ============
+================================== INSERT INTO========================================
 
 1.INSERT INTO users (id, name, address, phone, dob) VALUES (
 	NULL, 'Masum', 'Jatrabari', '0156541695', '1996-05-03'
 )
 2. INSERT INTO students VALUES(101, 'Raul'); (table er nirdisto id er data insert)
+3. INSERT INTO mycontact(fname,email)VALUES('khayrul Alam Rayan', 'example@gmail.com');
 
 
 ========== select ===========
@@ -49,7 +50,7 @@ CREATE TABLE user1 (
 2. UPDATE students SET name = 'Tasmia', city = 'Barisal', class = 'Honours 3rd' WHERE id = '2';
 
 
-========== Delete ===========
+============================== Delete ===================================
 
 1. DELETE FROM students WHERE id = 6; (Delete Single Id)
 
@@ -92,9 +93,7 @@ INSERT INTO users VALUES (
 SELECT * FROM users; // all fields
 SELECT id, name, address FROM users; // selected fields
 
-
-
-============== Alter =============
+================================== Alter =================================
 
 1. ALTER TABLE Customers
    ADD Email varchar(255);  					= add column.
@@ -115,6 +114,18 @@ SELECT id, name, address FROM users; // selected fields
     );
 
 4. ALTER TABLE employees ADD COLUMN salary INT NOT NULL DEFAULT 25000; (kono table a column add krte chile ae command dite hoy)
+
+5. ALTER TABLE contact2 DROP COLUMN city (kono table a column remove krte chile ae command dite hoy)
+
+6. ALTER TABLE contact2 CHANGE mobile email VARCHAR(11); [kono table er fild naam Rename ae command er maddhome krte hoy]
+
+7. ALTER TABLE contact2 RENAME TO MYcontact;  [kono table er naam Rename ae command er maddhome krte hoy]
+
+8. ALTER TABLE mycontact ADD COLUMN fname VARCHAR(20), ADD COLUMN lname VARCHAR(20); [multiple column add krte ae command lage];
+
+9. ALTER TABLE mycontact MODIFY email VARCHAR(20) DEFAULT "unknow";
+
+
 
 
 
@@ -179,7 +190,7 @@ UPDATE employees SET lastName='Ahmed', firstName='Masum', email='masum@gmail.com
 
 
 
-================= Limit data ===============
+===============================================Limit data ==================================================
 
 $sql = "SELECT * FROM Orders LIMIT 30";			= data will show first 30 record
 
@@ -191,10 +202,7 @@ $sql = "SELECT * FROM Orders LIMIT 10 OFFSET 5";	= prothom 5 ta baade porer 10 t
 
 
 
-
-
-
-=====================  mysql join  =================
+============================================ mysql join=================================================
 
 ( db = wdpf55_sample ) 
 
@@ -541,6 +549,7 @@ Exp:SELECT REPLACE('HEY BUDDY','','');
 
 
 =======================Other Funcation=============================
+
 1. SELECT INSERT('Hello Wassup', 6, 0, 'Raju'); ()
 
 result: HelloRaju Wassup (kono sentence er maje jekono kichu add kora jye);
@@ -562,6 +571,7 @@ result: masum masum masum masum masum
 Result:dehsar
 
 =======================UPPER & LOWER=============================
+
 1. SELECT UPPER('abcdxyz');
   SELECT UCASE('abcdxyz');
  result:ABCDXYZ
@@ -578,6 +588,7 @@ accounting, casherir, manager, developer, accounting, cahserier, accounting
 result:accounting, casherier, developer, manager
 
 =======================ORDER BY==================================
+
 1.SELECT * FROM `employees` ORDER BY lastName, firstName; (Assending order sorting hoy[choto thake boro])
 
 2.SELECT * FROM employees ORDER BY fname DESC;    (descending order a sort hoy. boro thake choto)
@@ -597,6 +608,16 @@ result:accounting, casherier, developer, manager
 5. SELECT * FROM employees WHERE dept LIKE "%nag%";
 
 6. SELECT * FROM employees WHERE emp_id LIKE "%2%"; (id query kora jye)
+
+7. SELECT * FROM employees WHERE fname LIKE "t%" OR fname LIKE "m%";
+
+=======================NOT LIKE==================================
+
+1. SELECT * FROM employees WHERE fname NOT LIKE  "t%";  (first letter t chara sob asbe)
+
+2. SELECT * FROM employees WHERE fname NOT LIKE "m%"; (first letter m chara sob asbe)
+
+
 
 =======================COUNT()==================================
 
@@ -627,11 +648,78 @@ result:accounting, casherier, developer, manager
 4. SELECT dept, COUNT(emp_id), SUM(salary) FROM employees GROUP BY dept; (kon department koyta ase tar id dore total salary ber kora jye)
 
 
+==========================TIMESTAMP===============================
+
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+update_at DATETIME ON UPDATE CURRENT_TIMESTAMP
+
+current time = CURTIME()
+current data = CURDATE()
+current dayname =DAYNAME(NOW())
+Date-Formate(dd:mm:yyy) = DATE_FORMAT(NOW(), '%d:%m:%Y')
+
+Date-Formate(May 26nd at 22:00:00) = SELECT DATE_FORMAT(NOW(), '%M %D at %T');
+
+==========================lessthan, getterthan, Not equal(>, <, >=, <=, !=)===============================
+
+1. SELECT * FROM employees WHERE salary>=65000;  
+2. SELECT * FROM employees WHERE salary<=65000;
+3. SELECT * FROM employees WHERE salary>65000;
+4. SELECT * FROM employees WHERE salary != 25000; (25000 value chara baki value gulo asbe)
+5. SELECT * FROM employees WHERE salary = 25000;  (sudo 25000 er value gulo asbe)
+6. SELECT * FROM employees WHERE salary = 25000 AND dept= "businessman";
+
+
+==========================AND, OR===============================
+
+1. SELECT * FROM employees WHERE salary=25000 AND dept = 'businessman';
+
+2. SELECT * FROM employees WHERE salary = 65000 OR dept = 'accounting';
+
+3. SELECT * FROM employees WHERE salary = 25000 OR salary = 65000 OR salary = 120000;
+
+4. SELECT * FROM employees WHERE salary>=40000 AND salary<= 65000;
+
+
+==========================IN, NOT IN===============================
+1. SELECT * FROM employees WHERE dept IN('accounting','businessman', 'cashier'); [IN operatore diye multiple value ber kore ana hoy.]
+
+2. SELECT * FROM employees WHERE dept NOT IN('accounting', 'businessman'); [NOT IN operatore je value gulo first brac er moddhe ase segulo chara onno gulo asbe.]
+
+==========================BETWEEN===============================
+
+   SELECT * FROM employees WHERE salary>=40000 AND salary<= 65000; (BETWEEN diye aro sohoj vabe kora jye)
+
+1. SELECT * FROM employees WHERE salary BETWEEN 40000 AND 65000;  (find employees whose salary is more than 40000 and Less than 65000 [40000 er beshi 50000 er kom])
+
+==========================CASE===============================
+
+1. SELECT fname, salary, CASE  WHEN salary !=0 THEN  salary/80 END AS "TK IN DOLLER" FROM employees;
+
+2. SELECT fname, salary, CASE WHEN salary>=40000 THEN "High Salary" ELSE "Low Salary" END AS "salary_category" FROM employees;
+
+3. SELECT fname, salary, CASE WHEN salary>=50000 THEN "Higher Salary" WHEN salary>=40000 AND salary<50000 THEN "Mid Salary" ELSE "Low Salary" END AS "salary_category" FROM employees;
+
+
+===================================== CHECK() ============================================
+
+1. CREATE TABLE contact(
+mobile VARCHAR(15) UNIQUE CHECK(LENGTH(mob) >=10)  [CHECK er maddhome nirdisto kora jye characture length poriman]
+
+)
+
+2. CREATE TABLE contact2(
+	mobile VARCHAR(11) UNIQUE, CONSTRAINT mob_no_less_than_10digits CHECK(LENGTH(mobile) >=10));  [CONSTRAINT er maddhome 10 digit kom dile constraint message ti dibo]
 
 
 
 
+============================================== CONSTRINT=====================================================
 
+1. SELECT CONSTRAINT_TYPE, CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_NAME ='mycontact'; (ae command diye table er moddhe CONSTRAINTS ase kina CHECK kore)
 
+2. ALTER TABLE mycontact DROP CONSTRAINT mob_no_less_than_10digits [ae command er maddhome CONSTRAINT delete kora hoy];
+
+3.ALTER TABLE mycontact ADD CONSTRAINT mob_no_less_than_10digits CHECK(LENGTH(mobile)>=10)
 
 
