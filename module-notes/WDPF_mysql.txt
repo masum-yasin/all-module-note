@@ -525,8 +525,14 @@ SELECT IFNULL(student_name,"Total"), SUM(fees) FROM inst_info GROUP BY student_n
 * stored routine is creating function in mysql which will be called in php. so it will work faster. *
 
 
-** connceted with test/students **
+      
+=======================================STORE PROCEDURE===============================================
+**** An SQL statement or a set of SQL Statement that can be stored on database server which can be call no. of times.
+often used for performing actions like data modification, transaction control, and executing sequences of statements.
 
+ ### types of Store routine ###
+    1. Stored Procedure
+    2. User Defined Functions
 
 DELIMITER //
 Create PROCEDURE students_info(IN p_Name varchar(30), IN p_Gender ENUM('Male','Female'), IN p_DOB date, IN p_Email Varchar(50), IN p_Batch Varchar(10), IN p_Address Varchar(50), IN p_Hobbies Varchar(30))
@@ -568,7 +574,8 @@ mysql -h localhost -u root -p wdpf_test < wdpf_55_backup.sql
 
 
 ==================================== FOREIGN KEY CONSTRAINTS======================================
-**** Relation a Foreign  key with another table. ak table er primary key onno table...a sadaron key hesabe beboher krle take Foreign key bole *****
+
+#### Relation a Foreign  key with another table. ak table er primary key onno table...a sadaron key hesabe beboher krle take Foreign key bole ###
 
 1. CREATE TABLE orders(
 	ord_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -692,7 +699,8 @@ Result:dehsar
 
 1. SELECT DISTINCT dept FROM employees;   (table er kono field er unique value ber kore aner junno ae method beboher kora hoy)
 accounting, casherir, manager, developer, accounting, cahserier, accounting
-result:accounting, casherier, developer, manager
+
+result: accounting, casherier, developer, manager
 
 =======================ORDER BY==================================
 
