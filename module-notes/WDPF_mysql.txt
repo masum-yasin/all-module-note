@@ -534,11 +534,18 @@ often used for performing actions like data modification, transaction control, a
     1. Stored Procedure
     2. User Defined Functions
 
-DELIMITER //
+1. DELIMITER //
 Create PROCEDURE students_info(IN p_Name varchar(30), IN p_Gender ENUM('Male','Female'), IN p_DOB date, IN p_Email Varchar(50), IN p_Batch Varchar(10), IN p_Address Varchar(50), IN p_Hobbies Varchar(30))
      BEGIN
      insert into students( Name, Gender , DOB, Email, Batch ,Address, Hobbies) values (p_Name, p_Gender,p_DOB, p_Email, p_Batch, p_Address, p_Hobbies );
      END //
+
+2. DELIMITER $$
+CREATE PROCEDURE emp_info()
+ BEGIN 
+ SELECT * FROM employees ORDER BY salary;
+ END$$
+ DELIMITER ;
      
 
 
