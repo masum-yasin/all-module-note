@@ -2,7 +2,7 @@
 
 1. mysql -h localhost -u root -p
 
-2. show databases;   {sob database show hoy}
+2. SHOW DATABASES;;   {sob database show hoy}
 
 3. use database; {nirthisto database use kora jye}
 
@@ -440,13 +440,43 @@ CREATE TABLE students_audit(
 
 
 
+DELIMITER //
+CREATE TRIGGER trigger_before_insert
+BEFORE INSERT ON employees
+FOR EACH ROW
+BEGIN
+IF NEW.salary<0 THEN
+ SET NEW.salary = 0;
+ END IF ;
+ END //
+ DELIMITER ;
 
 
 
-* DELETE FROM products WHERE M_id=OLD.M_id
+DELIMITER //
+
+CREATE TRIGGER trigger_before_update
+BEFORE UPDATE ON employees
+FOR EACH ROW
+BEGIN
+    IF NEW.salary < 0 THEN
+        SET NEW.salary = OLD.salary;
+    END IF;
+END //
+
+DELIMITER ;
 
 
-* DELETE FROM result WHERE student_id = OLD.st_id	= ( student_id -> result table | OLD.st_id -> student table )
+#### how to check the existing trigger
+
+SHOW TRIGGERS LIKE 'table name'; (all trigger show kore ae command er maddhome)
+
+### How to delete the existing trigger?
+
+DROP TRIGGER database name.trigger name;
+
+
+ 
 
 
 
@@ -546,13 +576,44 @@ CREATE PROCEDURE emp_info()
  SELECT * FROM employees ORDER BY salary;
  END$$
  DELIMITER ;
+
+3. DELIMITER $$ 
+CREATE PROCEDURE get_empid(IN p_fname VARCHAR(50)
+BEGIN 
+ SELECT emp_id FROM employees WHERE fname = p_fname;
+ END$$   
+ DELIMITER ;
+
+call get_empid("mamun");   (procedure name dore procedure call kora hoy);
+
      
-
-
-
-
-
 ====================================== DATABASE INDEXING =================================
+
+####  Creating and using indexes in Mysql is a powerful way to optimize the performance of a database.
+
+## index er maddhome kom somoye....a onk data query kore ana jye.
+
+## How to add Index???
+
+Ans: CREATE INDEX index name ON Table Name(COLUMN NAME for Example salary, emp_id);
+
+Example: CREATE INDEX i_fname ON employees(fname, lname);
+
+## How To Show Index in  a table???
+
+SHOW INDEXES FROM Table Name;
+
+Example: SHOW INDEXES FROM employees;
+
+## How to Remove index??
+
+## ALTER TABLE Table Name DROP INDEX Index name;
+
+Example: ALTER TABLE employees DROP INDEX i_fname;
+
+
+
+
 
 1. full text indexing
 
@@ -757,6 +818,8 @@ result: accounting, casherier, developer, manager
 
 2. SELECT dept, COUNT(emp_id) FROM employees GROUP BY dept; (kon department koyta ase ta group akare chole asbe);
 
+3. SELECT dept, AVG(salary) FROM employees GROUP BY dept;
+
 
 
 =======================SUM()==================================
@@ -804,6 +867,7 @@ Date-Formate(May 26nd at 22:00:00) = SELECT DATE_FORMAT(NOW(), '%M %D at %T');
 
 
 ==========================IN, NOT IN===============================
+
 1. SELECT * FROM employees WHERE dept IN('accounting','businessman', 'cashier'); [IN operatore diye multiple value ber kore ana hoy.]
 
 2. SELECT * FROM employees WHERE dept NOT IN('accounting', 'businessman'); [NOT IN operatore je value gulo first brac er moddhe ase segulo chara onno gulo asbe.]
@@ -834,8 +898,6 @@ mobile VARCHAR(15) UNIQUE CHECK(LENGTH(mob) >=10)  [CHECK er maddhome nirdisto k
 	mobile VARCHAR(11) UNIQUE, CONSTRAINT mob_no_less_than_10digits CHECK(LENGTH(mobile) >=10));  [CONSTRAINT er maddhome 10 digit kom dile constraint message ti dibo]
 
 
-
-
 ============================================== CONSTRINT=====================================================
 
 1. SELECT CONSTRAINT_TYPE, CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_NAME ='mycontact'; (ae command diye table er moddhe CONSTRAINTS ase kina CHECK kore)
@@ -843,5 +905,19 @@ mobile VARCHAR(15) UNIQUE CHECK(LENGTH(mob) >=10)  [CHECK er maddhome nirdisto k
 2. ALTER TABLE mycontact DROP CONSTRAINT mob_no_less_than_10digits [ae command er maddhome CONSTRAINT delete kora hoy];
 
 3.ALTER TABLE mycontact ADD CONSTRAINT mob_no_less_than_10digits CHECK(LENGTH(mobile)>=10)
+
+
+
+====================================== CTE ==============================================
+
+## We want to calculate the average salary per department and then find all employees whose salary is above the average salary of their department.
+
+
+
+==================================== Database Taking Backup============================================
+
+ mysqldump -u root -p mydatabase>mydatabase_backup.sql
+
+
 
 
