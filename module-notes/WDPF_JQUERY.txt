@@ -26,7 +26,7 @@
 
 
 
-    =============================JQUERY SELTCTOR==============================
+    ================================JQUERY SELTCTOR==============================
 
 ## Jquery te class ke dorte = hoy $('.classname')'
 
@@ -75,7 +75,8 @@ $(p:last)   = last paragraph tag ti select kora hoy.
 </script>
 
 
- =============================JQUERY Events==============================
+ =============================JQUERY Mouse Events==============================
+
 1. Click()
 
 2. dblclick()
@@ -153,3 +154,51 @@ $(p:last)   = last paragraph tag ti select kora hoy.
   
   })
 </script>
+
+
+ =============================JQUERY KEYBOARD EVENTS==============================
+1. keypress
+2. keydown
+3. keyup
+
+
+--------------------------------KEYPRESS()-------------------------------------------
+
+    <script>
+      $(document).ready(function () {
+        $("body").keypress(function () {
+          $(this).css("background-color", "orange");
+        });
+      });
+    </script>
+
+--------------------------------KEYUP()-------------------------------------------
+
+  <script>
+      $(document).ready(function () {
+        $("body").keypress(function () {
+          $(this).css("background-color", "orange");
+        });
+        $("body").keyup(function () {
+          $(this).css("background-color", "green");
+        });
+      });
+    </script>
+
+
+
+ =============================JQUERY FORM EVENTS==============================
+
+1. focus()
+
+2. blur()
+
+3. change()
+
+4. select()
+
+5. submit()
+
+--------------------------------focus()-------------------------------------------
+
+
