@@ -200,5 +200,62 @@ $(p:last)   = last paragraph tag ti select kora hoy.
 5. submit()
 
 --------------------------------focus()-------------------------------------------
+  <script>
+
+   $(document).ready(function(){
+  $('#sname').focus(function(){
+    $(this).css({'background-color':'green', 'color': 'red '});
+  })
+})
+    </script>
+
+--------------------------------blur()-------------------------------------------
+
+ <script>
+
+$(document).ready(function(){
+  $('#sname').blur(function(){
+    $(this).css({'background-color':'red', 'color': 'red '});
+  })
+    </script>
+
+ --------------------------------change()-------------------------------------------
+
+$(document).ready(function(){
+  $('#dist').change(function(){
+    $(this).css({'background-color':'red', 'color': 'white '});
+  })
+})
 
 
+ --------------------------------select()-------------------------------------------
+
+
+$(document).ready(function(){
+  $('#dist').change(function(){
+    $(this).css({'background-color':'red', 'color': 'white '});
+  })
+})
+ --------------------------------scroll()-------------------------------------------
+
+
+$(document).ready(function(){
+    $(window).scroll(function(){
+        console.log('here are scrolling');
+    });
+})
+
+
+
+ =============================JQUERY GET METHODS==============================
+
+1. text()
+2. html()
+3. attr()
+4. val()
+
+  --------------------------------text()-------------------------------------------
+$(document).ready(function(){
+      var a =   $('.show-scroll').text();
+      console.log(a);
+        })
