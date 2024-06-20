@@ -1,5 +1,12 @@
+*/
+================================================== DOM ======================================================
 
-============= DOM ==================
+akti dom er moddhe 3 ti jensesh thake....
+
+1.HTML
+2.CSS
+3.JAVASCRIPT
+
 
 1. what is Javascript : High Level Interpreted Language.
 
@@ -87,12 +94,15 @@ const blueButton = document.getElementById( 'blue-button' );
 document.getElementById('khaki-button').addEventListener('click' , function() {	  =        direct EventListener-7***
     document.body.style.backgroundColor = 'khaki' ;
 } )
-
--- javascrip events
-* 'movemouse'	= mouse joto move korbe toto event hobe.
-* 'mouseenter'	= mouse pointer enter korlei event hobe.
-* 'mouseout'	= mouse pointer out hoye gese event hobe.
-* ''
+=============================================JAVASCRIPT EVENTS======================================================
+* movemouse	= mouse joto move korbe toto event hobe.
+* mouseenter	= mouse pointer enter korlei event hobe.
+* mouseout	= mouse pointer out hoye gese event hobe.
+* Onchange
+* Onclick
+* Onmouseover
+* Onkeydown                                                                                                                                                             * Onblur
+* Onload
 
 
 5. console.log(nameField.value)		=	input er vitorer text paite hoile (.value) deya laagbe.
@@ -123,3 +133,80 @@ document.getElementById('khaki-button').addEventListener('click' , function() {	
 9. console.log(event.target) ;		=	jake target korsi take click korle dekhabe.
 
 10. 
+
+****************************Html file thake element gulo amora nite pari 5 ti system...a*********************************
+
+1. getElementById
+2. getElementsByClassName
+3. getElementsByTagName
+4. 
+
+=========================================InnerText==========================================
+
+*** Html er vitorer text gulo access kora jye innertext er maddhome.
+
+  <script>
+        liCollection = document.getElementsByTagName('li');
+        // console.log(liCollection);
+        for(const li of liCollection){
+            console.log(li.innerText);
+        }
+    </script>
+
+=========================================getElementById==============================================
+
+<script>
+        liCollection = document.getElementsByTagName('li');
+       	 console.log(liCollection);
+        for(const li of liCollection){
+             console.log(li.innerText);
+          }									= jkono akti nirdisto element....k catch kora jabe
+    </script>
+
+ <script>
+         const placeh1 =document.getElementById('visit');
+         const output= placeh1.innerText = "Bangladesh is Beautiful Country";
+         console.log(output);
+        
+    </script>
+
+=========================================getElementsByClassName==============================================
+
+</script>
+        <script>
+            const lilist = document.getElementsByClassName('important-places');
+            // console.log(lilist);
+            for(const li of lilist){
+                console.log(li);          
+            }
+        </script>
+
+
+=========================================getElementsByTagName==============================================
+
+<script>
+        const storeTags = document.getElementsByTagName('li');
+        for(const storeTag of storeTags){
+            console.log(storeTag);                                   = nirdisto class gulo..k select korar junno bebohar kora hoy
+        }
+    </script>
+
+
+=========================================querySelectorAll==============================================
+ <script>
+        const countryList = document.querySelectorAll('.country-list li');
+        // console.log(countryList);
+        for(const li of countryList){                                 = nirdisto element er sob gulo select korar junno bebohar kora hoy
+            console.log(li.innerText);
+        }
+
+    </script>
+
+
+=========================================querySelector==============================================
+
+<script>
+        const countryList = document.querySelector('.country-list li');
+        console.log(countryList);
+        
+        </script>
