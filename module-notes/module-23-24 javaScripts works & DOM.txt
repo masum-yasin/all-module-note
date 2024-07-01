@@ -50,7 +50,7 @@ akti dom er moddhe 3 ti jensesh thake....
 
 10. secondTitle2.parentNode.parentNode.parentNode	= joto parentNode lekhbe toto uporer parent dekhabe.
 
-11. secondTitle.childNodes				= Child node gula dekhabe.
+
 
 
 12. 
@@ -94,6 +94,7 @@ const blueButton = document.getElementById( 'blue-button' );
 document.getElementById('khaki-button').addEventListener('click' , function() {	  =        direct EventListener-7***
     document.body.style.backgroundColor = 'khaki' ;
 } )
+
 =============================================JAVASCRIPT EVENTS======================================================
 * movemouse	= mouse joto move korbe toto event hobe.
 * mouseenter	= mouse pointer enter korlei event hobe.
@@ -200,6 +201,12 @@ document.getElementById('khaki-button').addEventListener('click' , function() {	
             console.log(li.innerText);
         }
 
+
+const sections = document.querySelectorAll('section');
+for(const section of sections){
+    section.style.border = "2px solid green";
+    section.style.backgroundColor = "blue";
+
     </script>
 
 
@@ -210,3 +217,72 @@ document.getElementById('khaki-button').addEventListener('click' , function() {	
         console.log(countryList);
         
         </script>
+
+
+
+================================= ae koyak ta step er maddhome akta div er class er vitorer elemnet and text gulo access kora jye===========================
+
+document.getElementsByClassName('address-widget')
+
+document.getElementsByClassName('address-widget')[0]
+
+document.getElementsByClassName('address-widget')[0].innerText
+
+document.getElementsByClassName('address-widget')[0].innerHTML
+
+======================================================== jekono div er akti Element Change kora jave ====================================================
+
+document.getElementsByClassName('favoriate-container')[0].innerHTML = '<section>National Beautiful Country </section>'
+
+
+======================== jekono div id dore oi div er childnodes gula dekha jabe (ae ti browser er consol a dekte hoy) ========================================
+
+						placeContainer.childNodes[2]
+
+=================================== akti nirdisto element er parent element ti khuje pawya jye (ae ti browser er consol adekte hoy)===============================
+
+					placeUl.parentNode
+
+
+***************************************************************************appendChild()*****************************************************************************
+
+
+==========================kono div ba main tag er vitor append er maddhome nawya jye dynamic vabe(class process)================================
+
+const container = document.getElementsByClassName("mainContainer")[0];
+const section = document.createElement('section');
+const h1 = document.createElement('h1');
+h1.innerText = "My favorite Food";
+section.appendChild(h1);
+const li1 = document.createElement('li');
+li1.innerText = "Birani";
+section.appendChild(li1);
+const li2= document.createElement('li');
+li2.innerText = "Borhani";
+section.appendChild(li2);
+const li3 = document.createElement('li');
+li3.innerText = "kacchi";
+section.appendChild(li3);
+container.appendChild(section);
+
+
+
+==========================kono div ba main tag er vitor append er maddhome nawya jye dynamic vabe(id process)================================
+
+
+const container = document.getElementById("mainContainer");
+const section = document.createElement('section');
+const h1 = document.createElement('h1');
+h1.innerText = "My favorite Food";
+section.appendChild(h1);
+const li1 = document.createElement('li');
+li1.innerText = "Birani";
+section.appendChild(li1);
+const li2= document.createElement('li');
+li2.innerText = "Borhani";
+section.appendChild(li2);
+const li3 = document.createElement('li');
+li3.innerText = "kacchi";
+section.appendChild(li3);
+container.appendChild(section);
+​ 
