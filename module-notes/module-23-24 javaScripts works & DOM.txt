@@ -104,6 +104,30 @@ document.getElementById('khaki-button').addEventListener('click' , function() {	
 * Onmouseover
 * Onkeydown                                                                                                                                                             * Onblur
 * Onload
+======================================================================================Onclick() Example=============================================================
+
+1. <button onclick="makeYellow()">Make Yellow</button>
+
+<script>
+    function makeYellow(){
+        document.body.style.backgroundColor = "yellow";
+    }
+</script>
+
+2. <button id="makeblue">Make Yellow</button>
+
+const bluebtn= document.getElementById('bluebtn').addEventListener('click',function makeBlue(){
+    document.body.style.backgroundColor = "blue"
+})
+
+3.     <button onclick="makePurple()" id="makePurple">Make Purple</button>
+
+<script>
+    const Purblebtn = document.getElementById('makePurple');
+    Purblebtn.onclick = function makePurple(){
+        document.body.style.backgroundColor = 'purple';
+    }
+</script>
 
 
 5. console.log(nameField.value)		=	input er vitorer text paite hoile (.value) deya laagbe.
